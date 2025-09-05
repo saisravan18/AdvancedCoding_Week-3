@@ -1,0 +1,23 @@
+4) Remove an element given an interger key,write a program in c to return the number the number the number og the values not eaqual to key.
+
+#include <stdio.h>
+
+int countNotEqual(int arr[], int size, int key) {
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] != key) {
+            count++;
+        }
+    }
+    return count;
+}
+int main() {
+    int arr[] = {1, 2, 3, 2, 4, 2, 5};
+    int key = 2;
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    int result = countNotEqual(arr, size, key);
+    printf("Number of elements not equal to %d: %d\n", key, result);
+
+    return 0;
+}
