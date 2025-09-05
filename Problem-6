@@ -1,0 +1,27 @@
+ Best time to sell a commodity: Given an array of positive integers that represent the price of a commodity on a given day, return two integers which represent the best day to buy and later, sell the commodity.
+
+public class BestTimeToSell {
+    public static int[] bestBuySellDays(int[] prices) {
+        if (prices == null || prices.length < 2) return new int[]{-1, -1};
+        int minPriceIndex = 0;
+        int buyDay = 0, sellDay = 0;
+        int maxProfit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            int profit = prices[i] - prices[minPriceIndex];
+            if (profit > maxProfit) {
+                maxProfit = profit;
+                buyDay = minPriceIndex;
+                sellDay = i;
+            }
+            if (prices[i] < prices[minPriceIndex]) {
+                minPriceIndex = i;
+            }
+        }                   
+        return new int[]{buyDay, sellDay};
+    }
+    public static void main(String[] args) {
+        int[] prices = {7, 1, 5, 3, 6, 4};
+        int[] result = bestBuySellDays(prices);
+        System.out.println("Buy on day: " + result[0] + ", Sell on day: " + result[1]);
+    }
+}
