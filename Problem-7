@@ -1,0 +1,20 @@
+7) String reversal: Given an string with words separated by empty spaces, commas or fullstops, write a program to return the string after removing the commas and fullstops and reversing the words in the string.
+
+public class StringReversal {
+    public static String reverseWords(String input) {
+        input = input.replace(",", "").replace(".", "");
+        String[] words = input.trim().split("\\s+");
+        StringBuilder result = new StringBuilder();
+        for (int i = words.length - 1; i >= 0; i--) {
+            result.append(words[i]);
+            if (i > 0) result.append(" ");
+        }
+        return result.toString();
+    }
+    public static void main(String[] args) {
+        String str = "Hello, world. This is, Java.";
+        String reversed = reverseWords(str);
+        System.out.println("Original: " + str);
+        System.out.println("Reversed: " + reversed);
+    }
+}
