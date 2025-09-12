@@ -1,0 +1,26 @@
+9) Is subsequence: Given two strings str1 and str2, write a program to return true if str2 is a subsequence of str1 and false otherwise.
+
+import java.util.Scanner;
+public class SubsequenceCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the first string (str1): ");
+        String str1 = sc.nextLine();
+        System.out.print("Enter the second string (str2): ");
+        String str2 = sc.nextLine();
+        boolean isSubsequence = checkSubsequence(str1, str2);
+        System.out.println("Is str2 a subsequence of str1? " + isSubsequence);
+        sc.close();
+    }
+    public static boolean checkSubsequence(String str1, String str2) {
+        int i = 0; 
+        int j = 0;
+        while (i < str1.length() && j < str2.length()) {
+            if (str1.charAt(i) == str2.charAt(j)) {
+                j++;
+            }
+            i++;
+        }
+        return j == str2.length();
+    }
+}
